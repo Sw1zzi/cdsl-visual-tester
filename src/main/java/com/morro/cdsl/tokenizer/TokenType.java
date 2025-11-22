@@ -1,0 +1,115 @@
+package com.morro.cdsl.tokenizer;
+
+public enum TokenType {
+    // Ключевые слова
+    TASK("TASK"), DECK("DECK"), TARGET("TARGET"), DRAW("DRAW"),
+    CONDITION("CONDITION"), CALCULATE("CALCULATE"),
+
+    // Типы задач
+    CARDS("CARDS"), WORDS("WORDS"), NUMBERS("NUMBERS"), EQUATIONS("EQUATIONS"),
+    BALLS("BALLS"), DIVISIBILITY("DIVISIBILITY"), REMAINDERS("REMAINDERS"), CHESS("CHESS"),
+
+    // Параметры для задач со словами
+    ALPHABET("ALPHABET"), SET("SET"), LENGTH("LENGTH"), UNIQUE("UNIQUE"),
+    ALLOW_DUPLICATES("ALLOW_DUPLICATES|DUPLICATES"),
+
+    // Условия для слов
+    PALINDROME("PALINDROME"),
+    ALTERNATING("ALTERNATING|ALTERNATING_VOWELS_CONSONANTS"),
+    CONSONANT_FOLLOWED_BY_VOWEL("CONSONANT_FOLLOWED_BY_VOWEL"),
+    VOWEL_FOLLOWED_BY_CONSONANT("VOWEL_FOLLOWED_BY_CONSONANT"),
+    MORE_VOWELS_THAN_CONSONANTS("MORE_VOWELS_THAN_CONSONANTS"),
+    MORE_CONSONANTS_THAN_VOWELS("MORE_CONSONANTS_THAN_VOWELS"),
+    EQUAL_VOWELS_CONSONANTS("EQUAL_VOWELS_CONSONANTS|SAME_VOWELS_CONSONANTS"),
+
+    // Шахматы
+    BOARD_HEIGHT("BOARD_HEIGHT|HEIGHT"),
+    BOARD_WIDTH("BOARD_WIDTH|WIDTH"),
+    PIECES("PIECES"),
+    ATTACKING("ATTACKING"),
+    NON_ATTACKING("NON_ATTACKING"),
+
+    // Остатки
+    DIVIDEND("DIVIDEND"),
+    DIVISOR("DIVISOR"),
+    REMAINDER("REMAINDER"),
+
+    // Делимости
+    NUMBER_LENGTH("NUMBER_LENGTH"),
+    TRANSFORMATION("TRANSFORMATION"),
+    INCREASES_BY_FACTOR("INCREASES_BY_FACTOR"),
+    DECREASES_BY_FACTOR("DECREASES_BY_FACTOR"),
+    UNCHANGED("UNCHANGED"),
+    INCREASES_BY("INCREASES_BY"),
+    DECREASES_BY("DECREASES_BY"),
+
+    // Шары и урны
+    URN("URN"),
+    CONTENTS("CONTENTS"),
+    DRAW_SEQUENTIAL("SEQUENTIAL"),
+    DRAW_SIMULTANEOUS("SIMULTANEOUS"),
+
+    // Уравнения
+    UNKNOWNS("UNKNOWNS"),
+    COEFFICIENTS("COEFFICIENTS"),
+    SUM("SUM"),
+    DOMAIN("DOMAIN"),
+    CONSTRAINTS("CONSTRAINTS"),
+
+    // Числа
+    DIGITS("DIGITS"),
+    DISTINCT("DISTINCT"),
+    ADJACENT_DIFFERENT("ADJACENT_DIFFERENT"),
+    INCREASING("INCREASING"),
+    NON_DECREASING("NON_DECREASING"),
+    DECREASING("DECREASING"),
+    NON_INCREASING("NON_INCREASING"),
+
+    // Логические операторы
+    AND("AND"), OR("OR"), NOT("NOT"),
+
+    // Операторы сравнения
+    EQUALS("=="), NOT_EQUALS("!="), GREATER(">"), LESS("<"),
+    GREATER_EQUAL(">="), LESS_EQUAL("<="),
+
+    // Типы колод
+    STANDARD("STANDARD"), FRENCH("FRENCH"), SPANISH("SPANISH"), CUSTOM("CUSTOM"),
+
+    // Замена
+    REPLACEMENT("REPLACEMENT"), NO_REPLACEMENT("NO_REPLACEMENT"),
+
+    // Вероятности
+    PROBABILITY("PROBABILITY"), COMBINATIONS("COMBINATIONS"), EXPECTATION("EXPECTATION"),
+
+    // Достоинства карт
+    ACE("ACE|A"), KING("KING|K"), QUEEN("QUEEN|Q"), JACK("JACK|J"),
+    RANK("[2-9]|10"),
+
+    // Масти
+    HEARTS("HEARTS|H"), DIAMONDS("DIAMONDS|D"), CLUBS("CLUBS|C"), SPADES("SPADES|S"),
+
+    // Символы
+    LBRACKET("\\["), RBRACKET("\\]"), LPAREN("\\("), RPAREN("\\)"),
+    COMMA(","),
+
+    // Значения
+    INTEGER("\\d+"),
+    STRING("\"[^\"]*\""),
+    BOOLEAN("YES|NO|TRUE|FALSE"),
+
+    // Конец
+    EOF("EOF"),
+
+    // Неизвестный токен
+    UNKNOWN(".+"), DRAW_COUNT("DRAW_COUNT");
+
+    private final String pattern;
+
+    TokenType(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+}
