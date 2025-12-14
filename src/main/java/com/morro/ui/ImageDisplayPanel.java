@@ -2,6 +2,7 @@ package com.morro.ui;
 
 import com.morro.cdsl.interpreter.ProblemContext;
 import com.morro.cdsl.model.ProblemType;
+import com.morro.service.ImageGeneratorService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -95,10 +96,17 @@ public class ImageDisplayPanel extends JPanel {
 
     public void generateImage() {
         if (problemContext != null) {
-            // Здесь будет вызов вашего сервиса генерации изображений
-            // Пока создаем заглушку
-            currentImage = createPlaceholderImage();
-            displayImage(currentImage);
+            try {
+                ImageGeneratorService generator = new ImageGeneratorService();
+                currentImage = generator.generateImage(problemContext);
+                displayImage(currentImage);
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this,
+                        "Error generating image: " + e.getMessage(),
+                        "Generation Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
